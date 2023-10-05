@@ -44,15 +44,18 @@ p.copyright {
         나리타 공항선 운행 정보
     </div>
     <div class=body>
-		<table>
-			<tr>
-				<td>정보를 불러오고 있어요...</td>
-			</tr>
-		</table>
+        <svg id="map" viewBox="0 0 800 8000"></svg>
     </div>
     <div class=footer>
         <p class=copyright>© 2023 Hyeon.js, All rights reserved.</p>
     </div>
+    <script>
+        fetch('https://api.hyeonjs.com/keisei')
+            .then((response) => response.json())
+            .then((data) => {
+                alert(JSON.stringify(data));
+            });
+    </script>
 </body>
 
 </html>
