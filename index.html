@@ -53,8 +53,19 @@ p.copyright {
         fetch('https://api.hyeonjs.com/keisei')
             .then((response) => response.json())
             .then((data) => {
-                alert(JSON.stringify(data));
+                // alert(JSON.stringify(data));
+                createMap(data);
             });
+        
+        function createMap(data) {
+            var n = 50;
+            var src = '';
+            data.forEach((e, i) => {
+                src += '<circle cx="100" cy="' + (n * i) + '" r="10" />';
+                src += '<text x=100 y=' + (n * i) + '>' + e.stn + '</text>';
+            });
+            document.getElementById("map").innerHTML = src;
+        }
     </script>
 </body>
 
