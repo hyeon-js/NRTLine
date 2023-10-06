@@ -44,7 +44,7 @@ p.copyright {
         나리타 공항선 운행 정보
     </div>
     <div class=body>
-        <svg id="map" viewBox="0 0 800 8000"></svg>
+        <svg id="map" viewBox="0 0 800 4000"></svg>
     </div>
     <div class=footer>
         <p class=copyright>© 2023 Hyeon.js, All rights reserved.</p>
@@ -61,8 +61,9 @@ p.copyright {
             var n = 50;
             var src = '';
             data.forEach((e, i) => {
-                src += '<circle cx="100" cy="' + (n * i) + '" r="10" />';
-                src += '<text x=100 y=' + (n * i) + '>' + e.stn + '</text>';
+                var y = n * (i + 1);
+                src += '<circle cx="100" cy="' + y + '" r="10" />';
+                src += '<text x=100 y=' + y + '>' + e.stn + '</text>';
             });
             document.getElementById("map").innerHTML = src;
         }
