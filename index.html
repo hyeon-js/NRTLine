@@ -24,14 +24,26 @@ div.body {
     max-width: 1080px;
     padding: 16px;
 }
-table {
-    width: 100%;
-    border: 1px solid #000000;
-    border-collapse: collapse;
-}
-td {
-    text-align: center;
-}
+
+line {
+     stroke-width: 12;
+     stroke-linejoin: round;
+     stroke-linecap: round;
+ }
+
+ circle {
+     fill: #FFFFFF;
+     stroke: #000000;
+     stroke-width: 2;
+ }
+
+ text {
+     font-size: 34px;
+     text-anchor: start;
+     font-family: 'NanumSquare';
+     text-anchor: start;
+     dominant-baseline: middle;
+ }
 p.copyright {
     text-align: center;
     font-size: 12px;
@@ -44,7 +56,7 @@ p.copyright {
         나리타 공항선 운행 정보
     </div>
     <div class=body>
-        <svg id="map" viewBox="0 0 800 4000"></svg>
+        <svg id="map" viewBox="0 0 800 2700"></svg>
     </div>
     <div class=footer>
         <p class=copyright>© 2023 Hyeon.js, All rights reserved.</p>
@@ -59,11 +71,11 @@ p.copyright {
         
         function createMap(data) {
             var n = 50;
-            var src = '';
+            var src = '<line x1="100" y1="50" x2="100" y2="2650" stroke="#0A3788" />';
             data.forEach((e, i) => {
-                var y = n * (i + 1);
+                var y = 100 * i + 50;
                 src += '<circle cx="100" cy="' + y + '" r="10" />';
-                src += '<text x=100 y=' + y + '>' + e.stn + '</text>';
+                src += '<text x=160 y=' + (y+5) + '>' + e.stn + '</text>';
             });
             document.getElementById("map").innerHTML = src;
         }
