@@ -65,7 +65,6 @@ p.copyright {
         fetch('https://api.hyeonjs.com/keisei')
             .then((response) => response.json())
             .then((data) => {
-                // alert(JSON.stringify(data));
                 createMap(data);
             });
         
