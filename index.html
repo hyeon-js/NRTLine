@@ -70,7 +70,9 @@ p.copyright {
         
         function createMap(data) {
             var n = 50;
-            var src = '<line x1="100" y1="50" x2="100" y2="2650" stroke="#0A3788" />';
+            var src = '<line x1="100" y1="50" x2="100" y2="950" stroke="#0A3788" />';
+            src += '<line x1="100" y1="950" x2="100" y2="2550" stroke="#FF8620" />';
+            src += '<line x1="100" y1="2550" x2="100" y2="2650" stroke="#0A3788" />';
             data.forEach((e, i) => {
                 var y = 100 * i + 50;
                 src += '<circle cx="100" cy="' + y + '" r="10" />';
