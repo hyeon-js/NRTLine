@@ -76,7 +76,7 @@ p.copyright {
             data.forEach((e, i) => {
                 var y = 100 * i + 50;
                 src += '<circle cx="100" cy="' + y + '" r="10" />';
-                src += '<text x=160 y=' + (y+5) + '>' + e.stn + '</text>';
+                src += '<text x=160 y=' + (y+5) + ' onclick=\'trainList('+JSON.stringify(e)+');\'>' + e.stn + '</text>';
                 if (e.up.length > 0) src += train_up(y, e.up);
                 if (e.dn.length > 0) src += train_dn(y, e.dn);
             });
@@ -93,6 +93,13 @@ p.copyright {
             var x = 100 + 20;
             y -= 20;
             return "<image xlink:href='./images/dn.png' x='" + x + "' y='" + y + "' width='20px'/>";
+        }
+
+        function trainList(data) {
+            var str = '';
+            data.up.forEach((e) => str += e.term + '행 ' + e.type + '\n');
+            data.dn.forEach((e) => str += e.term + '행 ' + e.type + '\n');
+            if (str != '') alert(str.trim());
         }
     </script>
 </body>
