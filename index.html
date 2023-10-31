@@ -50,12 +50,45 @@
         text-align: center;
         font-size: 14px;
     }
+
+    div#overlay {
+        margin: 0px;
+        width: 100%;
+        position: fixed;
+        bottom : 0;
+        align-items: center;
+        z-index: 2;
+        padding: 0px;
+        display: none;
+    }
+    div.overlay_inner {
+        background-color: #FFFFFFDD;
+        margin: 0px auto;
+        max-width: 1080px;
+        padding: 16px;
+        box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.3);
+    }
+    div.window {
+        font-size: 18px;
+    }
+    div.close {
+        text-align: end;
+        margin-bottom: 0px;
+    }
 </style>
 
 <body>
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic.css" rel="stylesheet">
     <div class=title>
         나리타 공항선 운행 정보
+    </div>
+    <div id=overlay>
+        <div class=overlay_inner>
+            <div class=close onclick="closeWindow();">X</div>
+            <div class=window>
+                <div id=window_text></div>
+            </div>
+        </div>
     </div>
     <div class=body>
         <svg id="map" viewBox="0 0 800 2700"></svg>
@@ -98,11 +131,18 @@
         }
 
         function trainList(data) {
-            var str = '';
-            data.up.forEach((e) => str += e.term + '행 ' + e.type + '\n');
-            data.dn.forEach((e) => str += e.term + '행 ' + e.type + '\n');
-            if (str != '') alert(str.trim());
+            var str = [];
+            data.up.forEach((e) => str.push(e.term + '행 ' + e.type + '\n'));
+            data.dn.forEach((e) => str.push(e.term + '행 ' + e.type + '\n'));
+            if (str == '') return;
+            document.getElementById("overlay").style.display = 'block';
+            document.getElementById("window_text").innerHTML = str.join("<br>");
         }
+
+        function closeWindow() {
+            document.getElementById("overlay").style.display = 'none';
+        }
+
     </script>
 </body>
 
