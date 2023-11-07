@@ -128,13 +128,17 @@
         function train_up(y, data) {
             var x = 100 - 40;
             y -= 20;
-            return "<image xlink:href='./images/up.png' x='" + x + "' y='" + y + "' width='20px'/>";
+            if (data.length == 1) return "<image xlink:href='./images/up.png' x='" + x + "' y='" + y + "' width='20px'/>";
+            return "<image xlink:href='./images/up.png' x='" + (x-10) + "' y='" + y + "' width='20px'/>"+
+                "<image xlink:href='./images/up.png' x='" + (x+10) + "' y='" + y + "' width='20px'/>";
         }
 
         function train_dn(y, data) {
             var x = 100 + 20;
             y -= 20;
-            return "<image xlink:href='./images/dn.png' x='" + x + "' y='" + y + "' width='20px'/>";
+            if (data.length == 1) return "<image xlink:href='./images/dn.png' x='" + x + "' y='" + y + "' width='20px'/>";
+            return "<image xlink:href='./images/dn.png' x='" + (x-10) + "' y='" + y + "' width='20px'/>"+
+                "<image xlink:href='./images/dn.png' x='" + (x+10) + "' y='" + y + "' width='20px'/>";
         }
 
         function trainList(data) {
